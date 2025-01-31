@@ -1,15 +1,16 @@
 #include "mainwindow.h"
 #include "./ui_mainwindow.h"
 
-
-void flawed_strdup(const char *input)
+// CodeQL example: https://codeql.github.com/codeql-query-help/cpp/cpp-badly-bounded-write/
+void congratulateUser(const char *userName)
 {
-	char *copy;
+	char buffer[80];
 
-	/* Fail to allocate space for terminating '\0' */
-	copy = (char *)malloc(strlen(input));
-	strcpy(copy, input);
-	return copy;
+	// BAD: even though snprintf is used, this could overflow the buffer
+	// because the size specified is too large.
+	snprintf(buffer, 256, "Congratulations, %s!", userName);
+
+	MessageBox(hWnd, buffer, "New Message", MB_OK);
 }
 
 MainWindow::MainWindow(QWidget *parent)
