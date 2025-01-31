@@ -10,7 +10,7 @@ void congratulateUser(const char *userName)
 	// because the size specified is too large.
 	snprintf(buffer, 256, "Congratulations, %s!", userName);
 
-	MessageBox(hWnd, buffer, "New Message", MB_OK);
+	// MessageBox(hWnd, buffer, "New Message", MB_OK);
 }
 
 MainWindow::MainWindow(QWidget *parent)
