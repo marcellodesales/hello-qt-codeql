@@ -66,13 +66,7 @@ jobs:
 
     # Installs the current LTS Qt SDK for default CodeQL runners
     - name: Install Qt
-      uses: jurplel/install-qt-action@v3
-      with:
-        aqtversion: '==3.1.*'
-        version: '6.5.2'
-        host: ${{ (env.RUNNER_OS == 'macOS' && 'mac') || 'linux' }}
-        target: 'desktop'
-        arch: ${{ (env.RUNNER_OS == 'macOS' && 'clang_64') || 'gcc_64' }}
+      uses: tlambert03/setup-qt-libs@v1
         
       # Configure CMake in a 'build' subdirectory. `CMAKE_BUILD_TYPE` is only required if you are using a single-configuration generator such as make.
       # See https://cmake.org/cmake/help/latest/variable/CMAKE_BUILD_TYPE.html?highlight=cmake_build_type
